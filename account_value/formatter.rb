@@ -1,6 +1,7 @@
 class Formatter
-  def self.format_main(total_value)
-    format(total_value)
+  def self.format_main(value)
+    color, symbol, amount = get_delta(value.current, value.previous) 
+    puts "#{money(value.current)} #{symbol} #{money(amount)} | color=#{color} font=InputMonoCondensed"
   end
 
   def self.format_sub(values)
@@ -14,7 +15,7 @@ class Formatter
   end
 
   def self.open_bitbay
-    puts "Open BitBay | href=https://bitbay.net"
+    puts "Open BitBay | href=https://app.bitbay.net"
   end
 
   def self.format_tracked(values)
@@ -23,11 +24,15 @@ class Formatter
     end
   end
 
+  def self.header
+    puts "  symbol  #{'current'.rjust(12)} #{'change'.rjust(8)} | font=InputMonoCondensed size=12 trim=false"
+  end
+
   private
 
   def self.format(value)
     color, symbol, amount = get_delta(value.current, value.previous) 
-    puts "#{symbol} #{value.key} #{money(value.current)} (%.2f) | color=#{color} #{url(value.key)}" % [amount]
+    puts "#{symbol} #{value.key} #{money(value.current).rjust(12)} #{money(amount).rjust(8)} | color=#{color} #{url(value.key)} font=InputMonoCondensed size=12"
   end
 
   def self.get_delta(current, previous)

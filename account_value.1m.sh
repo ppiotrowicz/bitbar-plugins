@@ -25,6 +25,9 @@ tracked = Values.new(ticker, other)
 Formatter.format_main(values.total)
 Formatter.separator
 Formatter.open_bitbay
+Formatter.separator
+Formatter.header
+Formatter.separator
 Formatter.format_sub(values.values)
 Formatter.separator
 Formatter.format_sub(tracked.values)

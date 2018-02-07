@@ -1,7 +1,7 @@
 class Formatter
   def self.format_main(value)
     color, symbol, amount = get_delta(value.current, value.previous) 
-    puts "#{money(value.current)} #{symbol} #{money(amount)} | color=#{color} font=InputMonoCondensed"
+    puts ":moneybag: #{money(value.current)} #{symbol} #{money(amount)} | color=#{color} font=InputMonoCondensed size=12"
   end
 
   def self.format_sub(values)
@@ -25,7 +25,7 @@ class Formatter
   end
 
   def self.header
-    puts "  symbol  #{'current'.rjust(12)} #{'change'.rjust(8)} | font=InputMonoCondensed size=12 trim=false"
+    puts "   symbol #{'current'.rjust(12)} #{'change'.rjust(8)} | font=InputMonoCondensed size=12 trim=false"
   end
 
   private

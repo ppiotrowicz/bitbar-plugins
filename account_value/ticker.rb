@@ -9,6 +9,8 @@ class Ticker
     ticker = JSON.parse(data)
     items = ticker['items']
     items.merge(fiat_currencies)
+  rescue SocketError
+    nil
   end
 
   private

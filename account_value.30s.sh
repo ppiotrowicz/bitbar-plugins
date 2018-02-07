@@ -15,6 +15,10 @@ require_relative 'account_value/formatter'
 
 
 ticker  = Ticker.new.fetch
+if ticker.nil?
+  puts ":boom:"
+  exit 0
+end
 
 wallet  = Wallet.new('wallet.json')
 values  = Values.new(ticker, wallet)
